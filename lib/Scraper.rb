@@ -1,10 +1,10 @@
 class Scraper
-  def self.scrape(path)
+  def self.scrape(path, type)
     doc = Nokogiri::HTML(open(path))
 
     table = doc.css("table.sortable")
     rows = table.css("tr")
-    labels = rows.collect { |row| row.css("th").text.gsub(" ", "") }.first.splitclea("\n")
+    labels = rows.collect { |row| row.css("th").text.gsub(" ", "") }.first.split("\n")
     content = rows.collect { |row| row.css( "td") }.filter { |array| !array.empty? }
 
     creatures = content.collect do |row|
@@ -32,6 +32,14 @@ class Scraper
       }
 
       creature
+      case type
+      when :bug
+        Bug.create(creature)
+      when :fish
+        Fish.create(creature)
+      when :deep_sea
+        DeepSea.create(creature)
+      end
     end
   end
 end
