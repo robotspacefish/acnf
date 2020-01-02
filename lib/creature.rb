@@ -1,7 +1,7 @@
 class Creature
   attr_accessor :name, :url, :image, :price, :location, :time, :months, :start_time, :end_time
 
-  def self.create(creature_hash)
+  def self.create_from_hash(creature_hash)
     creature = self.new(creature_hash)
     creature.save
   end
