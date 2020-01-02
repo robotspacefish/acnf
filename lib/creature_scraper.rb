@@ -1,4 +1,4 @@
-class Scraper
+class CreatureScraper
   def self.scrape(path, type)
     doc = Nokogiri::HTML(open(path))
 
