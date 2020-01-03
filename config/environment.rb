@@ -6,7 +6,7 @@ require 'open-uri'
 
 ActiveRecord::Base.establish_connection({
   :adapter => 'sqlite3',
-  :database => 'db/ac_new_leaf.sqlite3'
+  :database => 'db/development.sqlite3'
 })
 
 # require './lib/creature'
