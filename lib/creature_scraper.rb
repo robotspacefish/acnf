@@ -9,11 +9,14 @@ class CreatureScraper
     rows.each do |row_doc|
       case @type
       when :bug
-        Bug.create_from_hash(scrape_row(row_doc))
+        bug = Bug.create(scrape_row(row_doc))
+        bug.save
       when :fish
-        Fish.create_from_hash(scrape_row(row_doc))
+        fish = Fish.create(scrape_row(row_doc))
+        fish.save
       when :deep_sea
-        DeepSea.create_from_hash(scrape_row(row_doc))
+       deep_sea = DeepSea.create(scrape_row(row_doc))
+       deep_sea.save
       end
     end
   end
