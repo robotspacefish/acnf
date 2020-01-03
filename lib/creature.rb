@@ -10,6 +10,7 @@ class Creature
   end
 
   def save
+    self.insert
   end
 
   def insert
@@ -21,10 +22,17 @@ class Creature
     end
 
     sql = <<-SQL
-      INSERT INTO bugs (name, url, image, price, location, time, start_time, end_time) VALUES (?,?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO #{table_name} (name, url, image, price, location, time, start_time, end_time) VALUES (?,?, ?, ?, ?, ?, ?, ?)
     SQL
 
     DB[:connection].execute(sql, self.name, self.url, self.image, self.price, self.location, self.time, self.start_time, self.end_time)
+
+    @id = DB[:connection].execute("SELECT last_insert_rowid() FROM #{table_name}")[0][0]
+
+    self.months.each do |month, value|
+      month_sql = "UPDATE #{table_name} SET (#{month.to_s}) = ? WHERE id = ?"
+      DB[:connection].execute(month_sql, value ? 1 : 0, @id)
+    end
   end
 
   def time=(time)
@@ -62,7 +70,19 @@ class Creature
        location TEXT,
        time TEXT,
        start_time TEXT,
-       end_time TEXT
+       end_time TEXT,
+       january INTEGER,
+       february INTEGER,
+       march INTEGER,
+       april INTEGER,
+       may INTEGER,
+       june INTEGER,
+       july INTEGER,
+       august INTEGER,
+       september INTEGER,
+       october INTEGER,
+       november INTEGER,
+       december INTEGER
       )
     SQL
 
