@@ -14,7 +14,7 @@ class Creature
 
   def insert
     table_name = nil
-    if self.class == "DeepSea"
+    if self.class == DeepSea
       table_name = "deep_seas"
     else
       table_name = self.class.to_s.downcase + "s"
