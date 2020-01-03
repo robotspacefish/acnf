@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_042230) do
+ActiveRecord::Schema.define(version: 2020_01_03_210911) do
 
   create_table "bugs", force: :cascade do |t|
     t.string "name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_042230) do
     t.string "url"
     t.string "image_url"
     t.string "price"
-    t.string "location"
+    t.string "shadow_size"
     t.string "time"
     t.string "start_time"
     t.string "end_time"
@@ -58,12 +58,13 @@ ActiveRecord::Schema.define(version: 2020_01_03_042230) do
     t.boolean "december"
   end
 
-  create_table "fishs", force: :cascade do |t|
+  create_table "fishes", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.string "image_url"
     t.string "price"
     t.string "location"
+    t.string "shadow_size"
     t.string "time"
     t.string "start_time"
     t.string "end_time"
