@@ -4,10 +4,10 @@ require 'pry'
 require 'nokogiri'
 require 'open-uri'
 
-ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
-)
+ActiveRecord::Base.establish_connection({
+  :adapter => 'sqlite3',
+  :database => 'db/ac_new_leaf.sqlite3'
+})
 
 # require './lib/creature'
 require_all 'lib'
