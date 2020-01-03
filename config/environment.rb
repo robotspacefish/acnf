@@ -9,5 +9,4 @@ ActiveRecord::Base.establish_connection({
   :database => 'db/development.sqlite3'
 })
 
-# require './lib/creature'
 require_all 'lib'
