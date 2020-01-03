@@ -17,3 +17,9 @@ task :scrape_creatures do
   deep_sea_scraper = CreatureScraper.scrape("#{base_path}Deep-sea_creatures", :deep_sea)
   deep_sea_scraper.call
 end
+
+task :create_tables do
+  Creature.create_table("bug")
+  Creature.create_table("fish")
+  Creature.create_table("deep_sea")
+end
