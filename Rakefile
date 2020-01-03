@@ -11,10 +11,7 @@ end
 
 task :scrape_creatures do
   base_path = "https://animalcrossing.fandom.com/wiki/"
-  bug_scraper = CreatureScraper.new("#{base_path}Bugs_(New_Leaf)", :bug)
-  bug_scraper.call
-  fish_scraper = CreatureScraper.new("#{base_path}Fish_(New_Leaf)", :fish)
-  fish_scraper.call
-  deep_sea_scraper = CreatureScraper.new("#{base_path}Deep-sea_creatures", :deep_sea)
-  deep_sea_scraper.call
+  CreatureScraper.new("#{base_path}Bugs_(New_Leaf)", :bug).call
+  CreatureScraper.new("#{base_path}Fish_(New_Leaf)", :fish).call
+  CreatureScraper.new("#{base_path}Deep-sea_creatures", :deep_sea).call
 end
