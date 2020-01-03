@@ -28,7 +28,7 @@ class CreatureScraper
       {
         :name => row[0].text.lstrip.gsub("\n", ""),
         :url => row[0].css("a").attribute("href").value,
-        :image => row[1].css("img").attribute("src").value,
+        :image_url => row[1].css("img").attribute("src").value,
         :price => row[2].text.lstrip.gsub("\n", ""),
         :location => row[3].text.lstrip.gsub("\n", ""),
         :time => row[4].text.lstrip.gsub("\n", ""),
