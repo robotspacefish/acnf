@@ -1,3 +1,5 @@
 development:
   adapter: sqlite3
-  database: db/ac_new_leaf
+  database: db/ac_new_leaf.sqlite3
+  pool: 5
+  timeout: 5000
