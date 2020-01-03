@@ -35,4 +35,23 @@ class Creature
   def year=(months)
     # TODO year instance
   end
+
+  def self.create_table(type)
+    #todo months
+    sql = <<-SQL
+      CREATE TABLE IF NOT EXISTS #{type}s (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       name TEXT,
+       url TEXT,
+       image TEXT,
+       price TEXT,
+       location TEXT,
+       time TEXT,
+       start_time TEXT,
+       end_time TEXT
+      )
+    SQL
+
+    DB[:connection].execute(sql)
+  end
 end
