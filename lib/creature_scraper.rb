@@ -7,17 +7,16 @@ class CreatureScraper
 
   def call
     rows.each do |row_doc|
+      creature = nil
       case @type
       when :bug
-        bug = Bug.create(scrape_row(row_doc))
-        bug.save
+        creature = Bug.create(scrape_row(row_doc))
       when :fish
-        fish = Fish.create(scrape_row(row_doc))
-        fish.save
+        creature = Fish.create(scrape_row(row_doc))
       when :deep_sea
-       deep_sea = DeepSea.create(scrape_row(row_doc))
-       deep_sea.save
+       creature = DeepSea.create(scrape_row(row_doc))
       end
+      creature.save
     end
   end
 
