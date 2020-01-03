@@ -10,7 +10,21 @@ class Creature
   end
 
   def save
-    self.class.all << self
+  end
+
+  def insert
+    table_name = nil
+    if self.class == "DeepSea"
+      table_name = "deep_seas"
+    else
+      table_name = self.class.to_s.downcase + "s"
+    end
+
+    sql = <<-SQL
+      INSERT INTO bugs (name, url, image, price, location, time, start_time, end_time) VALUES (?,?, ?, ?, ?, ?, ?, ?)
+    SQL
+
+    DB[:connection].execute(sql, self.name, self.url, self.image, self.price, self.location, self.time, self.start_time, self.end_time)
   end
 
   def time=(time)
