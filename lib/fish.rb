@@ -1,5 +1,3 @@
-class Fish < Creature
-  def initialize(creature_hash)
-    creature_hash.each { |k, v| self.send("#{k}=", v) }
-  end
+class Fish < ActiveRecord::Base
+  self.table_name = :fishes
 end

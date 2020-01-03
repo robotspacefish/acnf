@@ -1,13 +1,12 @@
 require 'bundler'
 Bundler.require
 require 'pry'
-require 'colorize'
 require 'nokogiri'
 require 'open-uri'
 
-DB = {
-  :connection => SQLite3::Database.new("db/creatures.sqlite")
-}
+ActiveRecord::Base.establish_connection({
+  :adapter => 'sqlite3',
+  :database => 'db/development.sqlite3'
+})
 
-require './lib/creature'
 require_all 'lib'
