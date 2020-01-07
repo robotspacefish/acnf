@@ -27,11 +27,12 @@ class CreatureScraper
     end
 
     def scrape_fish_row(row)
+      price = make_int(row[2].text.lstrip.gsub("\n", ""))
       {
         :name => row[0].text.lstrip.gsub("\n", ""),
         :url => row[0].css("a").attribute("href").value,
         :image_url => row[1].css("img").attribute("src").value,
-        :price => row[2].text.lstrip.gsub("\n", ""),
+        :price => price,
         :location => row[3].text.lstrip.gsub("\n", ""),
         :shadow_size => row[4].text.lstrip.gsub("\n", ""),
         :time => row[5].text.lstrip.gsub("\n", ""),
@@ -51,11 +52,13 @@ class CreatureScraper
     end
 
     def scrape_deep_sea_row(row)
+      price = make_int(row[2].text.lstrip.gsub("\n", ""))
+
       {
         :name => row[0].text.lstrip.gsub("\n", ""),
         :url => row[0].css("a").attribute("href").value,
         :image_url => row[1].css("img").attribute("src").value,
-        :price => row[2].text.lstrip.gsub("\n", ""),
+        :price => price,
         :shadow_size => row[3].text.lstrip.gsub("\n", ""),
         :time => row[4].text.lstrip.gsub("\n", ""),
         january: row[5].text.lstrip.gsub("\n", "") == "-" ? false : true,
@@ -74,11 +77,13 @@ class CreatureScraper
     end
 
     def scrape_bug_row(row)
+      price = make_int(row[2].text.lstrip.gsub("\n", ""))
+
       {
         :name => row[0].text.lstrip.gsub("\n", ""),
         :url => row[0].css("a").attribute("href").value,
         :image_url => row[1].css("img").attribute("src").value,
-        :price => row[2].text.lstrip.gsub("\n", ""),
+        :price => price,
         :location => row[3].text.lstrip.gsub("\n", ""),
         :time => row[4].text.lstrip.gsub("\n", ""),
         january: row[5].text.lstrip.gsub("\n", "") == "-" ? false : true,
@@ -94,5 +99,9 @@ class CreatureScraper
         november: row[15].text.lstrip.gsub("\n", "") == "-" ? false : true,
         december: row[16].text.lstrip.gsub("\n", "") == "-" ? false : true
       }
+    end
+
+    def make_int(value)
+      value.delete(",").to_i
     end
 end
