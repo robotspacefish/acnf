@@ -4,10 +4,19 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'nokogiri'
 gem 'require_all', '~> 3.0'
-gem 'rake'
-gem 'sqlite3'
+
+gem 'nokogiri'
+
 gem "activerecord", "~> 5.2.3", :require => "active_record"
 gem "sinatra-activerecord", :require => "sinatra/activerecord"
-gem 'pry', :groups => [:development, :test]
+gem 'sinatra'
+gem 'thin'
+gem 'rake'
+
+group :development do
+  gem 'shotgun'
+  gem 'pry'
+  gem 'sqlite3', '~> 1.3.6'
+  gem 'tux'
+end
