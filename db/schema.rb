@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_210911) do
+ActiveRecord::Schema.define(version: 2020_01_07_190249) do
 
   create_table "bugs", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.string "image_url"
-    t.string "price"
+    t.integer "price"
     t.string "location"
     t.string "time"
     t.string "start_time"
